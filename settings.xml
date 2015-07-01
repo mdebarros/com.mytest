@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+  <servers>
+     <server>  
+       <id>${env.maven-s3-mule-repo_id}</id>
+       <username>${env.maven-s3-mule-repo_username}</username>
+       <password>${env.maven-s3-mule-repo_password}</password>
+       <passphrase>${env.maven-s3-mule-repo_passphrase}</passphrase>
+     </server>
+     <server>  
+       <id>${env.releases-ee_id}</id>
+       <username>${env.releases-ee_username}</username>
+       <password>${env.releases-ee_password}</password>
+     </server>
+  </servers>
+</settings>
