@@ -3,3 +3,4 @@ jdk:
   - oraclejdk7
 install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V --settings ./settings.xml
 script: mvn clean package --settings ./settings.xml
+deploy: mvn clean deploy --settings ./settings.xml
