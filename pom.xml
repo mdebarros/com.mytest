@@ -204,12 +204,12 @@
 			<scope>provided</scope>
 		</dependency>
 		<!-- Mule Modules -->
-		<dependency>
+<!-- 		<dependency>
 			<groupId>org.mule.modules</groupId>
 			<artifactId>mule-module-scripting</artifactId>
 			<version>${mule.version}</version>
 			<scope>provided</scope>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>org.mule.modules</groupId>
 			<artifactId>mule-module-xml</artifactId>
@@ -307,5 +307,12 @@
 			<url>http://repository.mulesoft.org/snapshots/</url>
 		  </pluginRepository>
     </pluginRepositories>
+	  <distributionManagement>
+		<repository>
+		  <id>cloudhub.eu.io</id>
+		  <name>CloudHub</name>
+		  <url>anypoint.mulesoft.com</url>
+		</repository>
+  </distributionManagement>
 
 </project>
