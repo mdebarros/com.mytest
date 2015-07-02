@@ -11,13 +11,34 @@
     <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
 		<mule.version>3.6.1</mule.version>
     	<mule.tools.version>1.0</mule.tools.version>
+    	<cloudhub.domain>dev-bvb-test</cloudhub.domain>
 	</properties>
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.mule.tools.appkit</groupId>
+				<artifactId>mule-appkit-maven-plugin</artifactId>
+				<version>3.4</version>
+				<extensions>true</extensions>
+				<executions>
+					<execution>
+						<!-- This can be changed to any Maven phase -->
+						<phase>deploy</phase>
+						<goals>
+							<goal>cloudhub-deploy</goal>
+						</goals>
+						<configuration>
+							<!-- Where the app will be deployed -->
+							<domain>${cloudhub.domain}</domain>
+							<!-- Max wait time in millisecs before timeout -->
+							<maxWaitTime>360000</maxWaitTime>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-app-maven-plugin</artifactId>
@@ -112,11 +133,31 @@
                     </execution>
                 </executions>
             </plugin>
-		</plugins>
-	</build>
+		<plugin>
+                <groupId>org.mule.munit.tools</groupId>
+                <artifactId>munit-maven-plugin</artifactId>
+                <version>3.6.0-BETA</version>
+                <executions>
+                    <execution>
+                        <id>test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+	<testResources>
+            <testResource>
+                <directory>src/test/munit</directory>
+            </testResource>
+        </testResources>
+    </build>
 
 	<!-- Mule Dependencies -->
 	<dependencies>
+
 		<!-- Xml configuration -->
 		<dependency>
         	<groupId>com.mulesoft.muleesb</groupId>
@@ -188,7 +229,37 @@
 			<version>${mule.version}</version>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+	<dependency>
+            <groupId>org.mule.munit</groupId>
+            <artifactId>munit-assert</artifactId>
+            <version>3.6.0-BETA</version>
+            <scope>test</scope>
+        </dependency>
+    <dependency>
+            <groupId>org.mule.munit</groupId>
+            <artifactId>munit-mock</artifactId>
+            <version>3.6.0-BETA</version>
+            <scope>test</scope>
+        </dependency>
+    <dependency>
+            <groupId>org.mule.munit</groupId>
+            <artifactId>munit-common</artifactId>
+            <version>3.6.0-BETA</version>
+            <scope>test</scope>
+        </dependency>
+    <dependency>
+            <groupId>org.mule.munit</groupId>
+            <artifactId>munit-runner</artifactId>
+            <version>3.6.0-BETA</version>
+            <scope>test</scope>
+        </dependency>
+    <dependency>
+            <groupId>org.mule.modules</groupId>
+            <artifactId>mule-interceptor-module</artifactId>
+            <version>3.6.0-BETA</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
 	<repositories>
           <repository>
@@ -230,6 +301,11 @@
                 <enabled>false</enabled>
             </snapshots>
         </pluginRepository>
+		  <pluginRepository>
+			<id>mulesoft-snapshots</id>
+			<name>MuleSoft Snapshot Repository</name>
+			<url>http://repository.mulesoft.org/snapshots/</url>
+		  </pluginRepository>
     </pluginRepositories>
 
 </project>

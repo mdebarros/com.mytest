@@ -15,5 +15,10 @@
        <username>${env.releases_ee_username}</username>
        <password>${env.releases_ee_password}</password>
      </server>
+     <server>  
+       <id>${env.cloudhub_id}</id>
+       <username>${env.cloudhub_username}</username>
+       <password>${env.cloudhub_password}</password>
+     </server>
   </servers>
 </settings>
