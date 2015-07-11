@@ -13,7 +13,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<mule.version>3.6.1</mule.version>
     	<mule.tools.version>1.0</mule.tools.version>
-    	<cloudhub.domain>dev-bvb-test</cloudhub.domain>
+    	<!-- <cloudhub.domain>bvb-test</cloudhub.domain>-->
 	</properties>
 
 	<build>
@@ -21,20 +21,23 @@
 			<plugin>
 				<groupId>org.mule.tools.appkit</groupId>
 				<artifactId>mule-appkit-maven-plugin</artifactId>
-				<version>3.4</version>
+				<version>3.5</version>
 				<extensions>true</extensions>
 				<executions>
 					<execution>
-						<!-- This can be changed to any Maven phase -->
 						<phase>deploy</phase>
 						<goals>
 							<goal>cloudhub-deploy</goal>
 						</goals>
 						<configuration>
-							<!-- Where the app will be deployed -->
-							<domain>${cloudhub.domain}</domain>
-							<!-- Max wait time in millisecs before timeout -->
+						<!-- 
+							<username>${env.cloudhub_username}</username>
+		                    <password>${env.cloudhub_password}</password>
+		                    <muleVersion>${mule.version}</muleVersion>
+		                    <workers>${env.cloudhub_workers}</workers>
+							<domain>${env.cloudhub_env_dev}-${cloudhub.domain}</domain>
 							<maxWaitTime>360000</maxWaitTime>
+						 -->
 						</configuration>
 					</execution>
 				</executions>
@@ -133,6 +136,28 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- <plugin>
+                <groupId>org.mule.tools.maven</groupId>
+                <artifactId>cloudhub-maven-plugin</artifactId>
+                <version>1.0</version>
+                <configuration>
+                    <muleVersion>3.6.0</muleVersion>
+                    <username>${env.cloudhub_username}</username>
+                    <password>${env.cloudhub_password}</password>
+                    <domain>${env.cloudhub_env_dev}-${cloudhub.domain}3</domain>
+                    <muleVersion>${mule.version}</muleVersion>
+                    <workers>${env.cloudhub_workers}</workers>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>deploy</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>-->
 		<plugin>
                 <groupId>org.mule.munit.tools</groupId>
                 <artifactId>munit-maven-plugin</artifactId>
@@ -297,9 +322,6 @@
             <name>mulesoft release repository</name>
             <layout>default</layout>
             <url>http://repository.mulesoft.org/releases/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
         </pluginRepository>
 		  <pluginRepository>
 			<id>mulesoft-snapshots</id>
@@ -307,12 +329,4 @@
 			<url>http://repository.mulesoft.org/snapshots/</url>
 		  </pluginRepository>
     </pluginRepositories>
-	  <distributionManagement>
-		<repository>
-		  <id>cloudhub.eu.io</id>
-		  <name>CloudHub</name>
-		  <url>anypoint.mulesoft.com</url>
-		</repository>
-  </distributionManagement>
-
 </project>
