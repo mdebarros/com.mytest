@@ -3,4 +3,8 @@ jdk:
   - oraclejdk7
 install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V --settings ./settings.xml
 script: mvn clean package --settings ./settings.xml
-after_success: mvn clean deploy --settings ./settings.xml
+#after_success: mvn clean deploy --settings ./settings.xml
+#before_deploy:
+#	-
+deploy: 
+	- deploy: mvn -X --settings ./settings.xml -DskipTests=true -Dmaven.javadoc.skip=true -B -V -Dcloudhub.username=${env.cloudhub_username} -Dcloudhub.password=${env.cloudhub_password} -Dcloudhub.domain=dev-${env.cloudhub_domain} -Dcloudhub.muleVersion=${env.cloudhub_muleVersion} -Dcloudhub.maxWaitTime=${env.cloudhub_maxWaitTime} -Dcloudhub.workers=${env.cloudhub_workers} clean package mule-appkit:cloudhub-deploy

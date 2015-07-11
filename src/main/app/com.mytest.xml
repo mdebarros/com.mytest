@@ -11,8 +11,9 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
         <http:listener config-ref="HTTP_Listener_Configuration" path="/*" doc:name="HTTP">
             <http:response-builder>
                 <http:header headerName="Content-Type" value="application/json"/>
+
             </http:response-builder>
         </http:listener>
-        <set-payload value="{ &quot;Hello&quot; : &quot;World1&quot; }" doc:name="Set Payload"/>
+        <set-payload value="{ &quot;Hello&quot; : &quot;World ${name}&quot; }" doc:name="Set Payload"/>
     </flow>
 </mule>
