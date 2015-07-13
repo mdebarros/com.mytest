@@ -11,8 +11,11 @@
     <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<mule.version>3.6.1</mule.version>
+		<mule.version>3.7.0</mule.version>
+		<!-- <mule.version>3.6.1</mule.version> -->
     	<mule.tools.version>1.0</mule.tools.version>
+    	<mule.munit.version>3.7.0-RC1</mule.munit.version>
+    	<!-- <mule.munit.version>3.6.0-BETA</mule.munit.version> -->
     	<!-- <cloudhub.domain>bvb-test</cloudhub.domain>-->
 	</properties>
 
@@ -161,7 +164,8 @@
 			<plugin>
                 <groupId>org.mule.munit.tools</groupId>
                 <artifactId>munit-maven-plugin</artifactId>
-                <version>3.6.0-BETA</version>
+                <!-- <version>3.6.0-BETA</version> -->
+                <version>${mule.munit.version}</version>
                 <executions>
                     <execution>
                         <id>test</id>
@@ -190,6 +194,14 @@
 			<version>${mule.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- 
+		<dependency>
+        	<groupId>org.mule</groupId>
+			<artifactId>mule-core</artifactId>
+			<version>${mule.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		 -->
 		<!-- Xml configuration -->
 		<dependency>
 			<groupId>com.mulesoft.muleesb.modules</groupId>
@@ -257,32 +269,39 @@
 	<dependency>
             <groupId>org.mule.munit</groupId>
             <artifactId>munit-assert</artifactId>
-            <version>3.6.0-BETA</version>
+            <!-- <version>3.6.0-BETA</version> --> <version>${mule.munit.version}</version>
             <scope>test</scope>
         </dependency>
     <dependency>
             <groupId>org.mule.munit</groupId>
             <artifactId>munit-mock</artifactId>
-            <version>3.6.0-BETA</version>
+            <!-- <version>3.6.0-BETA</version> --> <version>${mule.munit.version}</version>
             <scope>test</scope>
         </dependency>
     <dependency>
             <groupId>org.mule.munit</groupId>
             <artifactId>munit-common</artifactId>
-            <version>3.6.0-BETA</version>
+            <!-- <version>3.6.0-BETA</version> --> <version>${mule.munit.version}</version>
             <scope>test</scope>
         </dependency>
     <dependency>
             <groupId>org.mule.munit</groupId>
             <artifactId>munit-runner</artifactId>
-            <version>3.6.0-BETA</version>
+            <!-- <version>3.6.0-BETA</version> --> <version>${mule.munit.version}</version>
             <scope>test</scope>
         </dependency>
     <dependency>
             <groupId>org.mule.modules</groupId>
             <artifactId>mule-interceptor-module</artifactId>
-            <version>3.6.0-BETA</version>
+            <!-- <version>3.6.0-BETA</version> -->
+            <version>${mule.munit.version}</version>
             <scope>test</scope>
+        </dependency>
+    <dependency>
+            <groupId>org.mule.modules</groupId>
+            <artifactId>mule-module-spring-config</artifactId>
+            <version>${mule.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

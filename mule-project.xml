@@ -2,4 +2,5 @@
 <mule-project xmlns="http://www.mulesoft.com/tooling/project" runtimeId="org.mule.tooling.server.3.6.1.ee" schemaVersion="3.5.0.0">
     <name>com.mytest</name>
     <description></description>
+    <muleExtension name="Mule Client" qualifier="org.mule.tooling.ui.contribution.mclient.3.5.0"/>
 </mule-project>
