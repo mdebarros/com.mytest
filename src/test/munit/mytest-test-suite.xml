@@ -22,11 +22,12 @@ http://www.mulesoft.org/schema/mule/mock http://www.mulesoft.org/schema/mule/moc
     
     <!-- munit test -->
     <munit:test name="mytest-test-suite-com.mytestFlowTest" description="Test">
-        <mock:when messageProcessor=".*:.*" doc:name="Mock-Set-Payload" config-ref="mock_config_name">
+        <mock:when messageProcessor="mule:sub-flow" doc:name="Mock-Set-Payload" config-ref="mock_config_name">
             <mock:with-attributes>
-                <mock:with-attribute name="doc:name" whereValue="#['Set Payload']"/>
+                <mock:with-attribute name="name" whereValue="#[matchContains('com.mytestSub_Flow')]"/>
             </mock:with-attributes>
             <mock:then-return payload="#['bleh']"/>
+
         </mock:when>
         <munit:set payload="#[]" doc:name="Set Message"/>
         <flow-ref name="com.mytestFlow" doc:name="Flow-ref to com.mytestFlow"/>

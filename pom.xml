@@ -71,7 +71,13 @@
 				<extensions>true</extensions>
 				<configuration>
                     <copyToAppsDirectory>true</copyToAppsDirectory>
-				</configuration>
+				<inclusions>
+                        <inclusion>
+                            <groupId>org.mule.munit.utils</groupId>
+                            <artifactId>munit-mclient-module</artifactId>
+                        </inclusion>
+                    </inclusions>
+                </configuration>
 			</plugin>
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
@@ -328,6 +334,11 @@
             <artifactId>mule-module-spring-config</artifactId>
             <version>${mule.version}</version>
             <scope>provided</scope>
+        </dependency>
+    <dependency>
+            <groupId>org.mule.munit.utils</groupId>
+            <artifactId>munit-mclient-module</artifactId>
+            <version>3.7.0-RC1</version>
         </dependency>
     </dependencies>
 

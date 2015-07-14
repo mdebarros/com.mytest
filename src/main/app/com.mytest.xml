@@ -14,6 +14,10 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 
             </http:response-builder>
         </http:listener>
-        <set-payload value="{ &quot;Hello&quot; : &quot;World ${name}&quot; }" doc:name="Set Payload"/>
+        <flow-ref name="com.mytestSub_Flow" doc:name="Flow_Reference"/>
+
     </flow>
+    <sub-flow name="com.mytestSub_Flow">
+        <set-payload value="{ &quot;Hello&quot; : &quot;World ${name}&quot; }" doc:name="Set Payload"/>
+    </sub-flow>
 </mule>
